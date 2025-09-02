@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import History from "./History";
 import ExpenseForm from "./ExpenseForm";
 import { toast } from "react-toastify";
-import BalanceContainer from "./BalanceContainer";
+import BalanceContainer from "./Balancecontainer";
 const Container = () => {
     const [transactions, setTransactions] = useState([])
     const [editItem, setEditItem]= useState(null)
