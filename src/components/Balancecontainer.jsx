@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 
 const BalanceContainer = (props) => {
-    const { transactions } = props;
-    const [income, setIncome] = useState(0)
-    const [expense, setExpense] = useState(0)
-    const balance = income + expense;
-    useEffect(() => {
-        let inc = 0
-        let exp = 0
-        transactions.forEach((txn) => {
-            if (txn.amount < 0) {
-                exp += Number(txn.amount);
-            } else {
-                inc += Number(txn.amount)
+    const {transactions}= props
+    const [income, setIncome]= useState(0)
+    const [expense, setExpense]= useState(0)
+    const [balance, setBalance]= useState(0)
+
+    useEffect(()=>{
+        let inc=0
+        let exp=0
+        let bal=0
+        transactions.forEach((tan)=>{
+            if(tan.amount < 0){
+                exp+=Number(tan.amount)
+            } else{
+                inc+=Number(tan.amount)
             }
-        });
+            bal=inc+exp;
+        })
         setIncome(inc)
         setExpense(exp)
-    }, [transactions])
+        setBalance(bal)
+    },[transactions])
+
     return (
         <div className="balance-container">
             <div className="currency-item">
@@ -36,3 +41,4 @@ const BalanceContainer = (props) => {
     )
 }
 export default BalanceContainer;
+
